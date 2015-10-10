@@ -10,22 +10,35 @@
 #6
 #12
 
-def generate_tuple(n):
-    i=1
-    s=""
-    while i<=n:
-        s+=str(i)
-        i+=1
-        if(str(n) in s):
-            print(s)
-            return s
-            
-    return s
 
-a = input("Введите последовательность А : ")
+
+
+
 try:
-    a_tuple = int(a)
-    sNum= generate_tuple(a_tuple)
-    print("Первое вхождение заданной последовательности А в бесконечную последовательность S(нумерация с 1): ",sNum.rfind(a)+1)
+    a = input("Введите последовательность А : ")
+    if (a.isdigit()):
+        #length = len(a)
+        dig = int(a)
+        i=1
+        s=""
+        tupleFind = -1
+        #генерация последовательности (заданная последовательность в виде числа, до которого строить "бесконечную последовательность"
+        while i<=dig:
+            s+=str(i)
+            #rfind - вернёт -1, если последовательность не найдена, ищет справа
+            tupleFind = s.rfind(a)
+            #формируется только до заданной подпоследовательности
+            if(tupleFind == -1):
+                i+=1
+            else:
+                print("Первое вхождение заданной последовательности А в бесконечную последовательность S(нумерация с 1): ",tupleFind+1)
+                input()
+                break
+    else:
+        print("Некорректно введена последовательность")
+        input()
+            
+
 except ValueError as err:
     print(err)
+    input()
