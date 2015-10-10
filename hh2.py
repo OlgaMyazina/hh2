@@ -16,8 +16,16 @@ def generate_tuple(n):
     while i<=n:
         s+=str(i)
         i+=1
+        if(str(n) in s):
+            print(s)
+            return s
+            
     return s
 
-a = input("Введите последовательность А: ")
-sNum= generate_tuple(int(a))
-print(sNum.find(a)+1)
+a = input("Введите последовательность А : ")
+try:
+    a_tuple = int(a)
+    sNum= generate_tuple(a_tuple)
+    print("Первое вхождение заданной последовательности А в бесконечную последовательность S(нумерация с 1): ",sNum.rfind(a)+1)
+except ValueError as err:
+    print(err)
